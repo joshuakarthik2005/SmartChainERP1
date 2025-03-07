@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/5.1/howto/deployment/asgi/
 import os
 
 from django.core.asgi import get_asgi_application
-import sonyapp.routing
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Sony_main.settings')
 
 application = get_asgi_application()
