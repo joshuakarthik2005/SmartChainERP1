@@ -83,14 +83,7 @@ WSGI_APPLICATION = 'Sony_main.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sonyl',  # Ensure the database name is correct
-        'USER': 'joshuaa',  # Ensure this matches your PostgreSQL user
-        'PASSWORD': 'Sanjos123*',  # Set your actual password
-        'HOST': 'dpg-cv5be8l6l47c73d2ual0-a.singapore-postgres.render.com',  # Use 'localhost' if running locally
-        'PORT': '5432',  # Default PostgreSQL port
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL', 'postgresql://joshuaa:Sanjos123*@dpg-cv5be8l6l47c73d2ual0-a.singapore-postgres.render.com:5432/sonyl'))
 }
 
 # Render-specific settings - use the DATABASE_URL from environment if available
