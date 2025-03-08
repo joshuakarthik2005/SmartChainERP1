@@ -16,7 +16,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -29,7 +28,6 @@ DEBUG = True
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',') + [
     "smartchainerp1.onrender.com", "127.0.0.1", "localhost"
 ]
-
 
 # Application definition
 
@@ -80,14 +78,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Sony_main.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('postgresql://steamers:9iLZDCLolThkxAn5dC6tL0YdjpNDr3as@dpg-cv5be8l6l47c73d2ual0-a/sonyL'))
+    'default': dj_database_url.config(default='postgresql://steamers:9iLZDCLolThkxAn5dC6tL0YdjpNDr3as@dpg-cv5be8l6l47c73d2ual0-a/sonyL')
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -107,7 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -118,7 +113,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
@@ -144,13 +138,11 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000.onrender.com",  # Change this to match your frontend URL
+    "http://localhost:3000",  # Change this to match your frontend URL
 ]
-
 
 # Render-specific settings
 if 'RENDER' in os.environ:
-    import dj_database_url
     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
     # Security settings
