@@ -1,3 +1,4 @@
+# filepath: c:\Users\joshua karthik\OneDrive\ドキュメント\gitclone\SmartChainERP\Backend\Sony_main\Sony_main\settings.py
 """
 Django settings for Sony_main project.
 
@@ -81,23 +82,20 @@ WSGI_APPLICATION = 'Sony_main.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# Define the explicit database configuration
-DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://steamers:9iLZDCLolThkxAn5dC6tL0YdjpNDr3as@dpg-cv5be8l6l47c73d2ual0-a/sonyL')
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sonyl',
-        'USER': 'steamers',
-        'PASSWORD': '9iLZDCLolThkxAn5dC6tL0YdjpNDr3as',
-        'HOST': 'dpg-cv5be8l6l47c73d2ual0-a',
-        'PORT': '5432',
+        'NAME': 'sonyl',  # Ensure the database name is correct
+        'USER': 'joshuaa',  # Ensure this matches your PostgreSQL user
+        'PASSWORD': 'Sanjos123*',  # Set your actual password
+        'HOST': 'dpg-cv5be8l6l47c73d2ual0-a.singapore-postgres.render.com',  # Use 'localhost' if running locally
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
 
 # Render-specific settings - use the DATABASE_URL from environment if available
 if 'RENDER' in os.environ:
-    DATABASES['default'] = dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=True)
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
