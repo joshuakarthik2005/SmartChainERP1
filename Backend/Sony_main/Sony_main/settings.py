@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0g%4t%hc#)7fvdq(vc)1hu68^7d%0b2%epp19ycla+d9lc0kec'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',') + [
     "smartchainerp1.onrender.com", "127.0.0.1", "localhost"
