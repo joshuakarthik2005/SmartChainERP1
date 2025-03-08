@@ -152,7 +152,11 @@ DATABASES = {
     'default': dj_database_url.config(default=os.getenv('postgresql://steamers:9iLZDCLolThkxAn5dC6tL0YdjpNDr3as@dpg-cv5be8l6l47c73d2ual0-a/sonyL'))
 }
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+ALLOWED_HOSTS = {
+    os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+    ["smartchainerp1.onrender.com", "127.0.0.1", "localhost"]
+}
+
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
