@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'Sony_main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sony',
-        'USER': 'steamers',
-        'PASSWORD': '9iLZDCLolThkxAn5dC6tL0YdjpNDr3as',
+        'NAME': 'sonyl',
+        'USER': 'joshuaa',
+        'PASSWORD': 'Sanjos123*',
         'HOST': 'dpg-cv5be8l6l47c73d2ual0-a.singapore-postgres.render.com',
         'PORT': '5432',
         'OPTIONS': {
