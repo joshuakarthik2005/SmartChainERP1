@@ -87,7 +87,7 @@ DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://steamers:9iLZDCLolTh
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sonyL',
+        'NAME': 'sonyl',
         'USER': 'steamers',
         'PASSWORD': '9iLZDCLolThkxAn5dC6tL0YdjpNDr3as',
         'HOST': 'dpg-cv5be8l6l47c73d2ual0-a',
