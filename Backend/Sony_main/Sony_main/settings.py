@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-0g%4t%hc#)7fvdq(vc)1hu68^7d%0b2%epp19ycla+d9lc0kec
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',') + [
+    "smartchainerp1.onrender.com", "127.0.0.1", "localhost"
+]
 
 
 # Application definition
@@ -83,14 +85,7 @@ WSGI_APPLICATION = 'Sony_main.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'joshuaa',
-        'PASSWORD': 'Sanjos123*',
-        'HOST': 'localhost',  # If running PostgreSQL locally
-        'PORT': '5432',       # Default PostgreSQL port
-    }
+    'default': dj_database_url.config(default=os.getenv('postgresql://steamers:9iLZDCLolThkxAn5dC6tL0YdjpNDr3as@dpg-cv5be8l6l47c73d2ual0-a/sonyL'))
 }
 
 
@@ -128,7 +123,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -148,20 +147,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000.onrender.com",  # Change this to match your frontend URL
 ]
 
-DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('postgresql://steamers:9iLZDCLolThkxAn5dC6tL0YdjpNDr3as@dpg-cv5be8l6l47c73d2ual0-a/sonyL'))
-}
-
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',') + [
-    "smartchainerp1.onrender.com", "127.0.0.1", "localhost"
-]
-
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Render-specific settings
 if 'RENDER' in os.environ:
@@ -174,5 +159,7 @@ if 'RENDER' in os.environ:
     CSRF_TRUSTED_ORIGINS = [f"https://{os.getenv('ALLOWED_HOSTS')}"]
     SESSION_COOKIE_SECURE = True
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-    CSRF_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True  
 
+# ✅ Added session storage configuration
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
