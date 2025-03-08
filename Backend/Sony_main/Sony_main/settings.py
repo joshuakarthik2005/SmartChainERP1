@@ -83,7 +83,17 @@ WSGI_APPLICATION = 'Sony_main.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL', 'postgresql://joshuaa:Sanjos123*@dpg-cv5be8l6l47c73d2ual0-a.singapore-postgres.render.com:5432/sonyl'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sony',
+        'USER': 'steamers',
+        'PASSWORD': '9iLZDCLolThkxAn5dC6tL0YdjpNDr3as',
+        'HOST': 'dpg-cv5be8l6l47c73d2ual0-a.singapore-postgres.render.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',  # ✅ Enforces SSL connection
+        },
+    }
 }
 
 # Render-specific settings - use the DATABASE_URL from environment if available
