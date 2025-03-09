@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
-
+DATABASE_URL = "postgresql://neondb_owner:npg_5qwhMbP1RVBj@ep-frosty-voice-a1y1pgi0-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
