@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-import dj_database_url
 import os
 from pathlib import Path
 
@@ -48,6 +47,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -147,6 +147,3 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Change this to match your frontend URL
 ]
 
-DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('postgresql://steamers:9iLZDCLolThkxAn5dC6tL0YdjpNDr3as@dpg-cv5be8l6l47c73d2ual0-a/sonyL'))
-}
