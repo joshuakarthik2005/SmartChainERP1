@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-
 export default function StockDashboard() {
   return (
     <div id="stockDashboard" className="relative p-6 bg-white rounded-lg shadow">

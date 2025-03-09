@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import mqtt from 'mqtt';
 

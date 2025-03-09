@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export default function Page() {
   return (
       <div className="flex items-center justify-center min-h-screen">

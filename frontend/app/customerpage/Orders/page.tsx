@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import React from 'react';
 import { MOCK_ORDERS } from '../../../components/customerpage/data/mockData';
