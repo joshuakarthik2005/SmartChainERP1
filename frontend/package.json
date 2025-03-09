@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "main/main.js",
+  "homepage": "http://localhost:3000.onrender.com",
   "scripts": {
     "dev": "concurrently \"next dev\" \"wait-on http://localhost:3000 && electron .\"",
     "build": "next build && next export",
