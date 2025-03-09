@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; 
 
 const BASE_URL = "http://127.0.0.1:8000/api";
 
@@ -51,7 +51,7 @@ const refreshAccessToken = async (): Promise<string | null> => {
 };
 
 const fetchWithAuth = async (url: string, options: RequestInit = {}) => {
-  let accessToken = getAccessToken();
+  const accessToken = getAccessToken(); // 🔹 Changed 'let' to 'const'
 
   let response = await fetch(url, {
     ...options,
@@ -143,23 +143,14 @@ export const useCategoryData = () => {
 
         const data = result.data || [];
 
-        const formattedData: CategoryItem[] = data.map(
-          (
-            category: {
-              category_id: number;
-              name: string;
-              product_count: number;
-            },
-            index: number
-          ) => ({
-            category_id: category.category_id,
-            name: category.name,
-            product_count: category.product_count,
-            fill: ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A28AFF"][
-              index % 5
-            ],
-          })
-        );
+        const formattedData: CategoryItem[] = data.map((category: any) => ({
+          category_id: category.category_id,
+          name: category.name,
+          product_count: category.product_count,
+          fill: ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#A28AFF"][
+            Math.floor(Math.random() * 5) // 🔹 Removed unused `index`
+          ],
+        }));
 
         setCategoryData((prevCategoryData) =>
           JSON.stringify(prevCategoryData) === JSON.stringify(formattedData)
