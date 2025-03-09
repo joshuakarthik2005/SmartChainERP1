@@ -16,11 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
 
+def redirect_to_admin(request):
+    return redirect("/admin/")  # Redirects root URL to admin panel
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('sonyapp.urls')),  # Include sonyapp URLs
+    path("admin/", admin.site.urls),
+    path("api/", include("sonyapp.urls")),
+    path("", redirect_to_admin, name="redirect_to_admin"),  # Redirect "/" to "/admin/"
 ]
+
 
 
