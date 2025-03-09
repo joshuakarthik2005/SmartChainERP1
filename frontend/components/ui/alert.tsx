@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 type AlertProps = {
     children: React.ReactNode;
     variant?: 'default' | 'destructive';

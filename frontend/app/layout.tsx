@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ThemeProvider } from "@/components/contexts/ThemeProvider"
 import type { Metadata } from "next"
 import "@/styles/global.css"

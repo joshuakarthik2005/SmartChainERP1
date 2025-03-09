@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 export const MOCK_PRODUCTS = [
     { id: 1, name: 'Laptop Pro', price: 1299.99, category: 'Electronics', stock: 23, image: '/api/placeholder/200/200' },
     { id: 2, name: 'Coffee Maker', price: 89.99, category: 'Household', stock: 15, image: '/api/placeholder/200/200' },

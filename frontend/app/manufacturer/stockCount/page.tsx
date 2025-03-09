@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import React, { useState } from 'react';
 import { useStockData } from '@/components/manufacturer/stockcount/data';

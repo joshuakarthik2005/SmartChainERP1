@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { LoginForm } from "@/components/login_form"
 
 export default function Page() {

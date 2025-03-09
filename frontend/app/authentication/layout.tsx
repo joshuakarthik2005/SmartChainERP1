@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { PropsWithChildren } from "react";
 
 export default function authentication({ children }: PropsWithChildren) {

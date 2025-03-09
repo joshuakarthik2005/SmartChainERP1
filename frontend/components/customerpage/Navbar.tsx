@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import Anchor from "@/components/customerpage/anchor";
