@@ -52,8 +52,14 @@ interface Notification {
   date: string;
 }
 
-//Hardcoded data
+type Payment = {
+  id: string;
+  amount: number;
+  status: "pending" | "processing" | "success" | "failed";
+  email: string;
+};
 
+//Hardcoded data
 const testData: OverviewCard = {
   totalSales: 50000,
   numStores: 120,
@@ -106,47 +112,6 @@ const notifications: Notification[] = [
   { id: 4, message: "New customer feedback received", date: "2025-02-13" },
 ];
 
-type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
-
-export const payments: Payment[] = [
-  {
-    id: "728ed52f",
-    amount: 100,
-    status: "pending",
-    email: "m@example.com",
-  },
-  {
-    id: "489e1d42",
-    amount: 125,
-    status: "processing",
-    email: "example@gmail.com",
-  },
-  {
-    id: "489e1d4552",
-    amount: 125,
-    status: "success",
-    email: "example@gmail.com",
-  },
-  {
-    id: "489e1d432",
-    amount: 125,
-    status: "failed",
-    email: "example@gmail.com",
-  },
-  {
-    id: "489e1d422",
-    amount: 125,
-    status: "failed",
-    email: "example@gmail.com",
-  },
-  // ...
-];
-
 // const API_URL = "";
 
 const Dashboard: React.FC = () => {
@@ -154,11 +119,45 @@ const Dashboard: React.FC = () => {
   const [analytics] = useState<AnalyticsData>(analyticsData);
   const [reports] = useState<ReportData>(reportData);
   const [notif] = useState<Notification[]>(notifications);
+  
+  // Moved payments data inside the component
+  const paymentsData: Payment[] = [
+    {
+      id: "728ed52f",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com",
+    },
+    {
+      id: "489e1d42",
+      amount: 125,
+      status: "processing",
+      email: "example@gmail.com",
+    },
+    {
+      id: "489e1d4552",
+      amount: 125,
+      status: "success",
+      email: "example@gmail.com",
+    },
+    {
+      id: "489e1d432",
+      amount: 125,
+      status: "failed",
+      email: "example@gmail.com",
+    },
+    {
+      id: "489e1d422",
+      amount: 125,
+      status: "failed",
+      email: "example@gmail.com",
+    },
+    // ...
+  ];
 
   //WAITING FOR BACKEND :)))
 
-  // const [data, setData] = useState<O
-  // verviewCard | null>(null);
+  // const [data, setData] = useState<OverviewCard | null>(null);
   // const [loading, setLoading] = useState<boolean>(true);
   // const [error, setError] = useState<string | null>(null);
 
@@ -305,7 +304,7 @@ const Dashboard: React.FC = () => {
                     Data
                   </h2>
                   
-                  <DataTable columns={columns} data={payments} />
+                  <DataTable columns={columns} data={paymentsData} />
                 </Card>
               </div>
             </div>
