@@ -2,7 +2,7 @@ from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.urlpatterns import format_suffix_patterns  # For better API format handling
 from .views import (
-    CustomAuthToken, logout_view, get_employees, get_retailers,
+    CustomAuthToken, TokenView, logout_view, get_employees, get_retailers,
     get_orders, allocate_orders, get_trucks, get_shipments, get_stock_data, category_stock_data, store_qr_code
 )
 
