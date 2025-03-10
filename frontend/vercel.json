@@ -11,5 +11,6 @@
             "src": "/(.*)",
             "dest": "Sony_main.wsgi:application"
         }
-    ]
+    ],
+    "outputDirectory": "staticfiles"
 }
