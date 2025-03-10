@@ -1,6 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -14,7 +15,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Chrome } from "lucide-react";
 
-export function LoginForm({
+export default function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
@@ -63,6 +64,14 @@ export function LoginForm({
       setError("Server error. Please check if the backend is running.");
     }
   };
+  
+function RedirectToAdmin() {
+  useEffect(() => {
+    window.location.href = "https://your-backend-on-render.com/admin/";
+  }, []);
+
+  return <p>Redirecting to Admin Panel...</p>;
+}
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>

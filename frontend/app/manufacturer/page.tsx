@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 import { DataTable } from "../../components/manufacturer/data-table";
 import { columns } from "../../components/manufacturer/columns";
+import { useRouter } from "next/router";
 import {
   ChartConfig,
   ChartContainer,
@@ -24,6 +25,18 @@ import {
   TruckIcon,
   UsersIcon,
 } from "lucide-react";
+
+function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("https://your-backend-on-render.com/admin/");
+  }, []);
+
+  return <p>Redirecting to Admin...</p>;
+}
+
+export { Home };
 
 //Interface for all the tabs
 interface OverviewCard {
@@ -406,5 +419,7 @@ const Dashboard: React.FC = () => {
     </div>
   );
 };
+
+export { Dashboard };
 
 export default Dashboard;
