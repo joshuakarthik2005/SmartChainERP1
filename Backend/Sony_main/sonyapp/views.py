@@ -13,6 +13,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
 from rest_framework.views import APIView
+from rest_framework.authtoken.models import Token
 from .models import Employee, Retailer, Order, Truck, Shipment, Product, Category, QRScan
 from .serializers import (
     EmployeeSerializer, RetailerSerializer, 
@@ -257,3 +258,11 @@ def store_qr_code(request):
             return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
     return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+
+# ✅ Token View
+class TokenView(APIView):
+    permission_classes = [IsAuthenticated]  # Requires authentication to fetch token
+
+    def get(self, request):
+        token, created = Token.objects.get_or_create(user=request.user)
+        return Response({"token": token.key})

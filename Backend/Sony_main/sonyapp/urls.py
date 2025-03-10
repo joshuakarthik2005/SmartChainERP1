@@ -11,7 +11,7 @@ urlpatterns = [
     path("token/", CustomAuthToken.as_view(), name="api_token_auth"),  # Login (Returns JWT tokens)
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),  # Refresh JWT token
     path("logout/", logout_view, name="api_logout"),  # Logout (Blacklist refresh token)
-
+    path("authentication/", TokenView.as_view(), name="authentication"),
     # ✅ API Endpoints (Protected)
     path("employees/", get_employees, name="get_employees"),  # Admin Only
     path("retailers/", get_retailers, name="get_retailers"),  # Admin Only
