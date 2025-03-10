@@ -15,7 +15,17 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Chrome } from "lucide-react";
 
-export default function LoginForm({
+function RedirectToAdmin() {
+  useEffect(() => {
+    window.location.href = "https://your-backend-on-render.com/admin/";
+  }, []);
+
+  return <p>Redirecting to Admin Panel...</p>;
+}
+
+export default RedirectToAdmin;
+
+export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
@@ -31,7 +41,7 @@ export default function LoginForm({
     try {
       // Fixed URL construction
       const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "https://smartchainerp1-7v1x.onrender.com";
-      const response = await fetch(`${backendUrl}/token`, {
+      const response = await fetch(`${backendUrl}/api/authentication`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -64,14 +74,6 @@ export default function LoginForm({
       setError("Server error. Please check if the backend is running.");
     }
   };
-  
-function RedirectToAdmin() {
-  useEffect(() => {
-    window.location.href = "https://your-backend-on-render.com/admin/";
-  }, []);
-
-  return <p>Redirecting to Admin Panel...</p>;
-}
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
