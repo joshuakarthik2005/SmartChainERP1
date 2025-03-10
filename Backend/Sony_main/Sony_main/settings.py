@@ -29,7 +29,10 @@ DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
 # CORS settings
-CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:3000,https://smart-chain-erp-1.vercel.app/").split(",")
+CORS_ALLOWED_ORIGINS = os.getenv(
+    "CORS_ALLOWED_ORIGINS", 
+    "http://localhost:3000,https://smart-chain-erp-1.vercel.app,https://smart-chain-erp-1-3rqhd6dfn-joshuas-projects-fa134ca8.vercel.app"
+).split(",")
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://.*\.vercel\.app$",  # Allows all Vercel preview deployments
