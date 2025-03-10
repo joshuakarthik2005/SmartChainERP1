@@ -36,8 +36,6 @@ export function LoginForm({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
-        // Add this for CORS issues
-        credentials: "include",
       });
 
       console.log("🔄 Fetch response status:", response.status);
