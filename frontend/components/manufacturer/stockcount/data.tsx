@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"; 
-
-const BASE_URL = "http://127.0.0.1:8000/api";
+import NEXT_PUBLIC_BACKEND_URL from "next/config";
 
 export interface StockItem {
   productName: string;
@@ -25,7 +24,7 @@ const refreshAccessToken = async (): Promise<string | null> => {
   if (!refreshToken) return null;
 
   try {
-    const response = await fetch(`${BASE_URL}/token/refresh/`, {
+    const response = await fetch(`${NEXT_PUBLIC_BACKEND_URL}/token/refresh/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ refresh: refreshToken }),
@@ -87,7 +86,7 @@ export const useStockData = () => {
   useEffect(() => {
     const fetchStockData = async () => {
       try {
-        const response = await fetchWithAuth(`${BASE_URL}/stock/`);
+        const response = await fetchWithAuth(`${NEXT_PUBLIC_BACKEND_URL}/stock/`);
         if (!response.ok) throw new Error("Failed to fetch stock data");
 
         const data = await response.json();
@@ -135,7 +134,7 @@ export const useCategoryData = () => {
   useEffect(() => {
     const fetchCategoryData = async () => {
       try {
-        const response = await fetchWithAuth(`${BASE_URL}/category-stock/`);
+        const response = await fetchWithAuth(`${NEXT_PUBLIC_BACKEND_URL}/category-stock/`);
         if (!response.ok) throw new Error("Failed to fetch category data");
 
         const result = await response.json();

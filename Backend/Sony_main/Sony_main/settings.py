@@ -29,7 +29,12 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
 # CORS settings
 CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:3000,https://smart-chain-erp-1.vercel.app/").split(",")
-CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.vercel\.app$",  # Allows all Vercel preview deployments
+]
+
+CORS_ALLOW_CREDENTIALS = True  # Required if using authentication
 
 # Application definition
 INSTALLED_APPS = [
@@ -118,10 +123,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-# Allow frontend domain
-CORS_ALLOWED_ORIGINS = [
-    "https://smart-chain-erp-1.vercel.app",  # Your frontend URL
-]
 
 # Allow all origins (For debugging, not recommended for production)
 # CORS_ALLOW_ALL_ORIGINS = True

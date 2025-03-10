@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   env: {
-    API_BASE_URL: process.env.NEXT_PUBLIC_BACKEND_URL || "http://127.0.0.1:8000/admin/.com",
+    API_BASE_URL: process.env.NEXT_PUBLIC_BACKEND_URL || "https://smartchainerp1-7v1x.onrender.com",
   },
   output: 'export',
   redirects: async () => {

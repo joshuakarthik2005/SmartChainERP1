@@ -1,5 +1,4 @@
 "use client";
-
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,12 +28,16 @@ export function LoginForm({
     setError("");
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/token/`, {
+      // Fixed URL construction
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "https://smartchainerp1-7v1x.onrender.com";
+      const response = await fetch(`${backendUrl}/token`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
+        // Add this for CORS issues
+        credentials: "include",
       });
 
       console.log("🔄 Fetch response status:", response.status);

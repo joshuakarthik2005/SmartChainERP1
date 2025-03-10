@@ -11,6 +11,8 @@ from django.db.models import Count
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import authenticate
+from rest_framework.views import APIView
 from .models import Employee, Retailer, Order, Truck, Shipment, Product, Category, QRScan
 from .serializers import (
     EmployeeSerializer, RetailerSerializer, 
@@ -26,19 +28,18 @@ class StandardPagination(PageNumberPagination):
     max_page_size = 100
 
 # ✅ Custom JWT Login View
-class CustomAuthToken(TokenObtainPairView):
-    def post(self, request, *args, **kwargs):
-        response = super().post(request, *args, **kwargs)
-        user = request.user
-        return Response(
-            {
-                "access": response.data["access"],
-                "refresh": response.data["refresh"],
-                "user_id": user.id,
-                "username": user.username,
-            },
-            status=status.HTTP_200_OK,
-        )
+class CustomAuthToken(APIView):
+    def post(self, request):
+        username = request.data.get("username")
+        password = request.data.get("password")
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            refresh = RefreshToken.for_user(user)
+            return Response({
+                "refresh": str(refresh),
+                "access": str(refresh.access_token),
+            })
+        return Response({"error": "Invalid credentials"}, status=401)
 
 # ✅ Logout View (Blacklist Refresh Token)
 @api_view(["POST"])
