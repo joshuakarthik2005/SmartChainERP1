@@ -35,3 +35,4 @@ urllib3==2.3.0
 gunicorn
 dj-database-url
 python-dotenv==1.0.1
+whitenoise

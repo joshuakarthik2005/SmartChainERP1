@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from django.conf import settings
 import os
 import dj_database_url
 from dotenv import load_dotenv
@@ -132,3 +133,8 @@ CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 
 # Allow headers
 CORS_ALLOW_HEADERS = ["*"]
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+if not settings.DEBUG:
+    STATICFILES_DIRS = []
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
