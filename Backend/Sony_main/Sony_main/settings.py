@@ -23,16 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security settings
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "Sanjos123*")
-DEBUG = os.getenv("DEBUG", "False").lower() == "false"
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
 # CORS settings
-CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:3000,https://smart-chain-erp-1.vercel.app/").split(",")
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 INSTALLED_APPS = [
-    "corsheaders",
+    "corsheaders",  # Add this
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -47,7 +48,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",  # Add this at the top of middleware
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -87,7 +88,6 @@ if DATABASE_URL:
 else:
     raise ValueError("No DATABASE_URL environment variable set. Check your .env file.")
 
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
@@ -117,3 +117,17 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticated",
     ),
 }
+
+# Allow frontend domain
+CORS_ALLOWED_ORIGINS = [
+    "https://smart-chain-erp-1.vercel.app",  # Your frontend URL
+]
+
+# Allow all origins (For debugging, not recommended for production)
+# CORS_ALLOW_ALL_ORIGINS = True
+
+# Allow specific methods if needed
+CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+
+# Allow headers
+CORS_ALLOW_HEADERS = ["*"]
